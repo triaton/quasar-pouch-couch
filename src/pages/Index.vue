@@ -49,7 +49,9 @@ export default {
   },
   mounted () {
     this.localDb = new PouchDB('localdb')
-    this.remoteDb = new PouchDB('http://server.couchdb-api.com/db')
+    this.remoteDb = new PouchDB('http://localhost:5984/todos')
+    // TODO: uncomment line below for production
+    // this.remoteDb = new PouchDB('http://server.couchdb-api.com:5984/todos')
     this.localDb.replicate.from(this.remoteDb)
     this.updateList()
   }
